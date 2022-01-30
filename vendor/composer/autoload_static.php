@@ -332,7 +332,6 @@ class ComposerStaticInit75aba09d08ff16b2d1e1017f959a7b21
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
         'app\\Controller' => __DIR__ . '/../..' . '/app/Controller.php',
-        'app\\Database' => __DIR__ . '/../..' . '/app/Database.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

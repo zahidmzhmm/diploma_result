@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'f6f7957bda55240d61d353b016131329aad6be7e',
+        'reference' => '785f75f685dd816cd2e68c88d92e878dc933f32c',
         'name' => 'rpi-result/vendor',
         'dev' => true,
     ),
@@ -38,12 +38,12 @@
             'dev_requirement' => false,
         ),
         'rpi-result/vendor' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'f6f7957bda55240d61d353b016131329aad6be7e',
+            'reference' => '785f75f685dd816cd2e68c88d92e878dc933f32c',
             'dev_requirement' => false,
         ),
         'smalot/pdfparser' => array(

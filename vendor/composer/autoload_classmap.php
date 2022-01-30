@@ -249,5 +249,4 @@ return array(
     'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
     'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     'app\\Controller' => $baseDir . '/app/Controller.php',
-    'app\\Database' => $baseDir . '/app/Database.php',
 );
