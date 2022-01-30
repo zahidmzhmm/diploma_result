@@ -1,0 +1,9 @@
+Options -Multiviews
+#DirectoryIndex /home
+DirectoryIndex index.php?url=home
+RewriteEngine On
+#RewriteBase /public
+RewriteBase /rpi-result/public
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]

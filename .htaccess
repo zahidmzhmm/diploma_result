@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+#RewriteRule ^(.*)$ https://kakapocreative.co.nz/$1 [R,L]
+RewriteRule ^$ public/ [L]
+RewriteRule (.*) public/$1 [L]
