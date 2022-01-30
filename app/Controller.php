@@ -75,7 +75,7 @@ class Controller
             self::response('Congrats you passed', 'success', 200, $matches[1][0]);
         } else {
             if (preg_match_all("/" . $roll . " \{(.*?)\}/", $text, $matches)) {
-                self::response('Sorry you failed', "danger", 200, $matches[1][0]);
+                self::response('Sorry you failed', "danger", 202, $matches[1][0]);
             } else {
                 self::response('Incorrect Roll', 400);
             }
