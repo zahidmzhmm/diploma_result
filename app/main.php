@@ -23,4 +23,7 @@ if ($path[0] === 'api') {
     if ($path[1] === 'result') {
         $controller->fetchResult($_GET);
     }
+    if ($path[1] === 'fields') {
+        $controller->getFields();
+    }
 }

@@ -5,7 +5,8 @@
     "ottosmops/pdftotext": "^2.0",
     "nesbot/carbon": "^2.56",
     "ext-json": "*",
-    "smalot/pdfparser": "^2.0"
+    "smalot/pdfparser": "^2.0",
+    "ext-mysqli": "*"
   },
   "autoload": {
     "psr-4": {

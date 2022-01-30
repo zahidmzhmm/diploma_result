@@ -25,10 +25,15 @@ class Controller
             $pdf = $parser->parseFile(__DIR__ . '/../file/' . $fileName);
             $text = $pdf->getText();
             $fopen = fopen(__DIR__ . "/../file/text/" . $season . '-' . $semester . '-' . $type . ".txt", "w") or die("Unable to open file!");
+            $count = $this->rows("select id from `section` where `probidhan`='$season' AND `semester`='$semester' AND `type`='$type'");
+            if ($count === 0) {
+                $this->query("insert into `section` (`probidhan`,`semester`,`type`) values ('$season','$semester','$type')");
+            }
             if (fwrite($fopen, $text)) {
                 fclose($fopen);
                 self::response("Success", 'success', 200);
             } else {
+                fclose($fopen);
                 self::response("Something went wrong", 'error');
             }
         }
@@ -48,6 +53,29 @@ class Controller
         }
     }
 
+    public function getFields()
+    {
+        $scan = scandir(__DIR__ . '/../file/text/');
+        $count = count($scan);
+        $array = [];
+        if ($count > 2) {
+            $i2 = 0;
+            for ($i = 2; $i < $count; $i++) {
+                $ex_file = explode('-', str_replace('.txt', '', $scan[$i]));
+                $probidhan = $ex_file[0];
+                $semester = $ex_file[1];
+                $type = $ex_file[2];
+                $array[$i2]['probidhan'] = $probidhan;
+                $array[$i2]['semester'] = $semester;
+                $array[$i2]['type'] = $type;
+                $i2++;
+            }
+            self::response("Success", 'success', 200, $array);
+        } else {
+            self::response("Empty");
+        }
+    }
+
     public static function response($message, $type = "danger", $status = 405, $data = [])
     {
         echo json_encode(['message' => $message, 'type' => $type, 'status' => $status, 'data' => $data]);
@@ -64,5 +92,24 @@ class Controller
                 self::response('Incorrect Roll', 400);
             }
         }
+    }
+
+    public static function con()
+    {
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        if (!$conn) {
+            self::response("Database connection failed");
+        }
+        return $conn;
+    }
+
+    public function query($sql)
+    {
+        return mysqli_query(self::con(), $sql);
+    }
+
+    public function rows($sql)
+    {
+        return mysqli_num_rows($this->query($sql));
     }
 }
