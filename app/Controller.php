@@ -55,7 +55,7 @@ class Controller
 
     public function getFields()
     {
-        $data = mysqli_fetch_all($this->query("select * from `section`"), MYSQLI_ASSOC);
+        $data = mysqli_fetch_all($this->query("select DISTINCT semester from `section`"), MYSQLI_ASSOC);
         $count = count($data);
         if ($count > 0) {
             self::response("Success", 'success', 200, $data);

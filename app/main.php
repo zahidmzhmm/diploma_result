@@ -27,3 +27,9 @@ if ($path[0] === 'api') {
         $controller->getFields();
     }
 }
+if ($path[0] === 'formSubmit') {
+    $controller->uploadFile($_FILES);
+}
+if ($path[0] === 'fileUp') {
+    include __DIR__ . "/upload.php";
+}
