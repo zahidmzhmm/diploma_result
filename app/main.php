@@ -1,7 +1,6 @@
 <?php
 require __DIR__ . '/../config.php';
 require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/../public/PdfToText/PdfToText.phpclass';
 error_reporting(Error);
 
 $url = str_replace('/', '.', $_GET['url']);
@@ -18,7 +17,10 @@ if ($path[0] === 'api') {
     header("Access-Control-Allow-Headers: *");
     if (isset($_POST['csrf'])) {
         if ($path[1] === 'upload') {
-            $controller->uploadFile($_POST, $_FILES);
+            $controller->uploadFile($_FILES);
         }
+    }
+    if ($path[1] === 'result') {
+        $controller->fetchResult($_GET);
     }
 }
