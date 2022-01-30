@@ -55,22 +55,10 @@ class Controller
 
     public function getFields()
     {
-        $scan = scandir(__DIR__ . '/../file/text/');
-        $count = count($scan);
-        $array = [];
-        if ($count > 2) {
-            $i2 = 0;
-            for ($i = 2; $i < $count; $i++) {
-                $ex_file = explode('-', str_replace('.txt', '', $scan[$i]));
-                $probidhan = $ex_file[0];
-                $semester = $ex_file[1];
-                $type = $ex_file[2];
-                $array[$i2]['probidhan'] = $probidhan;
-                $array[$i2]['semester'] = $semester;
-                $array[$i2]['type'] = $type;
-                $i2++;
-            }
-            self::response("Success", 'success', 200, $array);
+        $data = mysqli_fetch_all($this->query("select * from `section`"), MYSQLI_ASSOC);
+        $count = count($data);
+        if ($count > 0) {
+            self::response("Success", 'success', 200, $data);
         } else {
             self::response("Empty");
         }
